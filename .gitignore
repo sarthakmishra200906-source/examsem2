@@ -1,1 +1,17 @@
-.exe
+# C build artifacts
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+
+# Debug/profiling files
+*.dSYM/
+*.pdb
+
+# Editor/OS files
+.vscode/
+.DS_Store
+Thumbs.db
