@@ -1,23 +1,28 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 struct node
 {
     int data;
     struct node *next;
 };
-struct node *head = NULL, *temp,*currentnode = NULL, *prevnode, *nextnode;
+struct node *head = NULL, *tail = NULL, *temp, *currentnode = NULL, *prevnode, *nextnode;
 int count = 0;
 void creatlist()
 {
     int n;
     temp = (struct node *)malloc(sizeof(struct node));
+    if (temp == NULL)
+    {
+        printf("memory allocation failed\n");
+        return;
+    }
     if (head == NULL)
     {
-        head = temp;
         printf("enter data ");
         scanf("%d", &n);
         temp->data = n;
         temp->next = NULL;
+        head = tail = temp;
         count++;
     }
     else
@@ -26,34 +31,38 @@ void creatlist()
         scanf("%d", &n);
         temp->data = n;
         temp->next = NULL;
-        head->next = temp;
-        head = temp;
+        tail->next = temp;
+        tail = temp;
         count++;
     }
 }
 void reverse_ittrative()
 {
-prevnode = NULL;
-currentnode = head;
-while(nextnode != NULL)
-{
-    nextnode = currentnode->next;
-    currentnode->next = prevnode;
-    prevnode = currentnode;
-    currentnode = nextnode;
-}
-head = prevnode;
+    prevnode = NULL;
+    currentnode = head;
+    while (currentnode != NULL)
+    {
+        nextnode = currentnode->next;
+        currentnode->next = prevnode;
+        prevnode = currentnode;
+        currentnode = nextnode;
+    }
+    head = prevnode;
 }
 void display()
-if(head == NULL)
 {
-    printf("list is empty");
-}else{
-    temp = head;
-    while (temp != NULL)
+    if (head == NULL)
     {
-        printf("%d ", temp->data);
-        temp = temp->next;
+        printf("list is empty");
+    }
+    else
+    {
+        temp = head;
+        while (temp != NULL)
+        {
+            printf("%d ", temp->data);
+            temp = temp->next;
+        }
     }
 }
 int main()
@@ -82,4 +91,3 @@ int main()
         }
     }
 }
-  
