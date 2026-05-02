@@ -11,7 +11,6 @@ struct double_node{
 };
 struct circular_node{
     int data;
-    struct circular_node *prev;
     struct circular_node *next;
 };
 struct node *newnode,*temp,*head=NULL;
@@ -320,22 +319,46 @@ void deleateatanyposdoublylinklist(){
     }
 }
 void circularlinklist(){
-    int n 
+    int n ;
     printf("enter your data : ");
     scanf("%d",&n);
     newnode3=(struct node*)malloc(sizeof( struct circular_node));
     if(head==NULL){
         head=temp3=newnode3;
         newnode3->data=n;
-        newnode3->prev=head;
         newnode->next=head;
+        count++;
     }else{
         newnode3->data=n;
-        newnode->prev=temp;
-        newnode->next=head;
-        temp
+        newnode3->next=head3;
+        temp3->next=newnode3;
+        temp3=newnode3;
+        count++;
     }
 }
+void circulardeleate(){
+    if (head3==NULL){
+        printf("nothing to deleate create one:");
+    }else{
+        temp3=head3;
+        head3=head3->next;
+        free(temp);
+        count--;
+    }
+}
+void deleatecircularatbeg(){
+    circulardeleate();
+}
+void deleatecircularatend(){
+    if(head3==NULL){
+        printf("nothing to deleate create one");
+    }else{
+        head=temp3;
+        while(temp3!=head)
+        count--;
+    }
+}
+
 
 
 
